@@ -1,0 +1,21 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div>
+    <h2>Pizza WebApp Home-Page</h2>
+    <p class="lead">A Pizza Web Application for storing Pizzas with Ingredients and Reviews, Bon appetit!</p>
+
+    <div>
+        <h4><a asp-action="CreateDatabase">Create Pizza Database</a></h4>
+    </div>
+
+    <div>
+        <h4><a asp-action="ClearDatabaseAction">Clear Pizza Database</a></h4>
+    </div>
+
+    <br />
+    <img src="@Url.Content("~/images/pizzapic.jpeg")" alt="Image Of Pizza" class="img-responsive" />
+    
+</div>
+
