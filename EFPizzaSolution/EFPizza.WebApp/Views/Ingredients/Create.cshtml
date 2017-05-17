@@ -25,12 +25,18 @@
                 <span asp-validation-for="Gluten" class="text-danger"></span>
             </div>
         </div>
-        <div class="form-group">
+        @*<div class="form-group">
             <label asp-for="Type" class="col-md-2 control-label"></label>
             <div class="col-md-10">
                 <input asp-for="Type" class="form-control" />
                 <span asp-validation-for="Type" class="text-danger"></span>
             </div>
+        </div>*@
+        <div class="form-group">
+            <input type="radio" name="type" value="Other"> Other <br />
+            <input type="radio" name="type" value="Meat"> Meat <br />
+            <input type="radio" name="type" value="Vegetable"> Vegetable <br />
+            <input type="radio" name="type" value="Fruit"> Fruit
         </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">

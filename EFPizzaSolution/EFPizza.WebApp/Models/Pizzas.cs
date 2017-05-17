@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace EFPizza.WebApp.Models
@@ -28,6 +29,8 @@ namespace EFPizza.WebApp.Models
         public decimal Prize { get; set; }
 
         public virtual Orgins Orgins { get; set; }
+
+        [DisplayName("Pizza Ingredients")]
         public virtual ICollection<PizzaIngredients> PizzaIngredients { get; set; }
         public virtual ICollection<Reviews> Reviews { get; set; }
     }

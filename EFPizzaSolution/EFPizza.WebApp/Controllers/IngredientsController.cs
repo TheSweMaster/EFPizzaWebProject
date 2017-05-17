@@ -19,9 +19,22 @@ namespace EFPizza.WebApp.Controllers
         }
 
         // GET: Ingredients
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            return View(await _context.Ingredients.OrderBy(i => i.Name).ToListAsync());
+            var listOfIngredients = _context.Ingredients.OrderBy(i => i.Name).ToList();
+            ViewBag.DisplayTypes = GetDisplayTypeValues(listOfIngredients);
+            return View(listOfIngredients);
+        }
+
+        private List<string> GetDisplayTypeValues(List<Ingredients> listOfIngredients)
+        {
+            var listOfTypes = new List<string>();
+            foreach (var ing in listOfIngredients)
+            {
+                var typeDisplay = GetDisplayTypeValue(ing);
+                listOfTypes.Add(typeDisplay);
+            }
+            return listOfTypes;
         }
 
         // GET: Ingredients/Details/5
@@ -34,12 +47,36 @@ namespace EFPizza.WebApp.Controllers
 
             var ingredients = await _context.Ingredients
                 .SingleOrDefaultAsync(m => m.Id == id);
+
+            ViewBag.DisplayType = GetDisplayTypeValue(ingredients);
+
+            var listOfPizzas = _context.PizzaIngredients.Where(x => x.IngredientId == id).Select(x => x.Pizza.Name).ToList();
+
+            ViewBag.PizzaIngredients = listOfPizzas;
+
             if (ingredients == null)
             {
                 return NotFound();
             }
 
             return View(ingredients);
+        }
+
+        private string GetDisplayTypeValue(Ingredients ingredients)
+        {
+            switch (ingredients.Type)
+            {
+                case 0:
+                    return "Other";
+                case 1:
+                    return "Meat";
+                case 2:
+                    return "Vegetable";
+                case 3:
+                    return "Fruit";
+                default:
+                    return "None";
+            }
         }
 
         // GET: Ingredients/Create
@@ -53,16 +90,42 @@ namespace EFPizza.WebApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Gluten,Name,Type")] Ingredients ingredients)
+        public async Task<IActionResult> Create([Bind("Id,Gluten,Name")] Ingredients ingredients, string type)
         {
             if (ModelState.IsValid)
             {
+                ingredients.Type = SetingredientsType(type);
+                if (type == "Other")
+                {
+                    ingredients.Type = 0;
+                }
                 _context.Add(ingredients);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
             return View(ingredients);
         }
+
+        private int SetingredientsType(string type)
+        {
+            if (type == "Meat")
+            {
+                return 1;
+            }
+            else if (type == "Vegetable")
+            {
+                return 2;
+            }
+            else if (type == "Fruit")
+            {
+                return 3;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
 
         // GET: Ingredients/Edit/5
         public async Task<IActionResult> Edit(int? id)

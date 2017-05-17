@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace EFPizza.WebApp.Models
@@ -24,6 +25,7 @@ namespace EFPizza.WebApp.Models
         [Range(0, 10)]
         public int Type { get; set; }
 
+        [DisplayName("Pizza Ingredients")]
         public virtual ICollection<PizzaIngredients> PizzaIngredients { get; set; }
     }
 }

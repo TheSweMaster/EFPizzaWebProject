@@ -34,6 +34,11 @@ namespace EFPizza.WebApp.Controllers
 
             var pizzas = await _context.Pizzas
                 .SingleOrDefaultAsync(m => m.Id == id);
+
+            var listOfIngredients = _context.PizzaIngredients.Where(x => x.PizzaId == id).Select(x => x.Ingredient.Name).ToList();
+
+            ViewBag.PizzaIngredients = listOfIngredients; 
+
             if (pizzas == null)
             {
                 return NotFound();

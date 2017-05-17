@@ -20,6 +20,7 @@ namespace EFPizza.WebApp.Models
         public string City { get; set; }
 
         [CustomDateRange]
+        [Required]
         public DateTime Date { get; set; }
 
         [DisplayName("Select Pizza")]

@@ -47,7 +47,7 @@ namespace EFPizza.WebApp.Controllers
         // GET: Reviews/Create
         public IActionResult Create()
         {
-            ViewData["PizzaId"] = new SelectList(_context.Pizzas, "Id", "Id");
+            ViewData["PizzaId"] = new SelectList(_context.Pizzas.OrderBy(r => r.Name), "Id", "Name");
             return View();
         }
 
@@ -65,7 +65,7 @@ namespace EFPizza.WebApp.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            ViewData["PizzaId"] = new SelectList(_context.Pizzas, "Id", "Id", reviews.PizzaId);
+            ViewData["PizzaId"] = new SelectList(_context.Pizzas.OrderBy(r => r.Name), "Id", "Name", reviews.PizzaId);
             return View(reviews);
         }
 
@@ -82,7 +82,7 @@ namespace EFPizza.WebApp.Controllers
             {
                 return NotFound();
             }
-            ViewData["PizzaId"] = new SelectList(_context.Pizzas, "Id", "Id", reviews.PizzaId);
+            ViewData["PizzaId"] = new SelectList(_context.Pizzas.OrderBy(r => r.Name), "Id", "Name", reviews.PizzaId);
             return View(reviews);
         }
 
@@ -118,7 +118,7 @@ namespace EFPizza.WebApp.Controllers
                 }
                 return RedirectToAction("Index");
             }
-            ViewData["PizzaId"] = new SelectList(_context.Pizzas, "Id", "Id", reviews.PizzaId);
+            ViewData["PizzaId"] = new SelectList(_context.Pizzas.OrderBy(r => r.Name), "Id", "Name", reviews.PizzaId);
             return View(reviews);
         }
 

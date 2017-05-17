@@ -30,6 +30,23 @@
         </dd>
     </dl>
 </div>
+
+<p>
+    <div><b>List of ingredients:</b></div>
+
+    @if (ViewBag.PizzaIngredients.Count != 0)
+    {
+        @foreach (var ing in ViewBag.PizzaIngredients)
+        {
+            <div> @ing </div>
+        }
+    }
+    else
+    {
+        <div>No @Html.DisplayNameFor(Model => Model.PizzaIngredients) was found. </div>
+    }
+</p>
+
 <div>
     <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
     <a asp-action="Index">Back to List</a>
