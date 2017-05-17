@@ -19,22 +19,10 @@ namespace EFPizza.WebApp.Controllers
         }
 
         // GET: Ingredients
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var listOfIngredients = _context.Ingredients.OrderBy(i => i.Name).ToList();
-            ViewBag.DisplayTypes = GetDisplayTypeValues(listOfIngredients);
+            var listOfIngredients = await _context.Ingredients.OrderBy(i => i.Name).ToListAsync();
             return View(listOfIngredients);
-        }
-
-        private List<string> GetDisplayTypeValues(List<Ingredients> listOfIngredients)
-        {
-            var listOfTypes = new List<string>();
-            foreach (var ing in listOfIngredients)
-            {
-                var typeDisplay = GetDisplayTypeValue(ing);
-                listOfTypes.Add(typeDisplay);
-            }
-            return listOfTypes;
         }
 
         // GET: Ingredients/Details/5

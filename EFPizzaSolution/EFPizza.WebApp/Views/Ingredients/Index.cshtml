@@ -6,11 +6,6 @@
 
 <h2>Ingredients Index</h2>
 
-@foreach (var type in ViewBag.DisplayTypes)
-{
-    <div>@type</div>
-}
-
 <p>
     <a asp-action="Create">Create New</a>
 </p>
@@ -42,7 +37,22 @@
                 @Html.DisplayFor(modelItem => item.Gluten)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Type)
+                @if (item.Type == 1)
+                {
+                    <div>Meat</div>
+                }
+                else if (item.Type == 2)
+                {
+                    <div>Vegetable</div>
+                }
+                else if (item.Type == 3)
+                {
+                    <div>Fruit</div>
+                }
+                else
+                {
+                    <div>Other</div>
+                }
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
@@ -50,7 +60,6 @@
                 <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
             </td>
         </tr>
-
 }
     </tbody>
 </table>

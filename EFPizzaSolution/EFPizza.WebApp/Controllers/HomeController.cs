@@ -68,6 +68,7 @@ namespace EFPizza.WebApp.Controllers
 "INSERT INTO[dbo].[Pizzas]([Id], [Description], [Name], [Prize]) VALUES(1, N'Stan bästa kebab pizza.', N'Kebab Pizza', CAST(95.00 AS Decimal(18, 2))) " +
 "INSERT INTO[dbo].[Pizzas] ([Id], [Description], [Name], [Prize]) VALUES(1002, N'Pizza med smak ifrån Hawaii.', N'Hawaii', CAST(75.00 AS Decimal(18, 2))) " +
 "INSERT INTO[dbo].[Pizzas] ([Id], [Description], [Name], [Prize]) VALUES(2002, N'Våran egna Special pizza.', N'Special Pizza', CAST(99.00 AS Decimal(18, 2))) " +
+"INSERT INTO[dbo].[Pizzas] ([Id], [Description], [Name], [Prize]) VALUES(2003, N'Den senaste pizzan.', N'Nya Pizzan', CAST(105.00 AS Decimal(18, 2))) " +
 "SET IDENTITY_INSERT[dbo].[Pizzas] OFF " +
 
 "SET IDENTITY_INSERT [dbo].[Orgins] ON " +
@@ -77,28 +78,37 @@ namespace EFPizza.WebApp.Controllers
 "SET IDENTITY_INSERT [dbo].[Orgins] OFF " +
 
 "SET IDENTITY_INSERT [dbo].[Reviews] ON " +
-"INSERT INTO [dbo].[Reviews] ([Id], [Description], [Grade], [PizzaId], [Title], [Date]) VALUES (1, N'Mumssss', 3, 1, N'Bästa pizza', N'2015-11-11 00:00:00') " +
-"INSERT INTO [dbo].[Reviews] ([Id], [Description], [Grade], [PizzaId], [Title], [Date]) VALUES (2, N'God pizza av högsta kvalitet', 5, 1002, N'BÄST!', N'2017-05-15 00:00:00') " +
-"INSERT INTO [dbo].[Reviews] ([Id], [Description], [Grade], [PizzaId], [Title], [Date]) VALUES (1002, N'Kebab Pizza var sämst', 0, 1, N'Värsta Kebabeb', N'2017-05-12 00:00:00') " +
-"INSERT INTO [dbo].[Reviews] ([Id], [Description], [Grade], [PizzaId], [Title], [Date]) VALUES (1003, N'Unik pizza med många olika smaker.', 4, 2002, N'Speciellt god', N'2015-11-28 00:00:00') " +
+"INSERT INTO [dbo].[Reviews] ([Id], [Description], [Grade], [PizzaId], [Title], [Date]) VALUES (1, N'Mumssss', 3, 1, N'Bästa pizzan', N'2017-05-15 00:00:00') " +
+"INSERT INTO [dbo].[Reviews] ([Id], [Description], [Grade], [PizzaId], [Title], [Date]) VALUES (2, N'God pizza av högsta kvalitet', 5, 1002, N'BÄST!', N'2017-05-14 00:00:00') " +
+"INSERT INTO [dbo].[Reviews] ([Id], [Description], [Grade], [PizzaId], [Title], [Date]) VALUES (1002, N'Kebab Pizzan var sämst', 1, 1, N'Värsta Kebaben', N'2017-05-16 00:00:00') " +
+"INSERT INTO [dbo].[Reviews] ([Id], [Description], [Grade], [PizzaId], [Title], [Date]) VALUES (1003, N'Unik pizza med många olika smaker.', 4, 2002, N'Speciellt god', N'2017-05-18 00:00:00') " +
 "SET IDENTITY_INSERT [dbo].[Reviews] OFF " +
 
 "SET IDENTITY_INSERT [dbo].[Ingredients] ON " +
-"INSERT INTO [dbo].[Ingredients] ([Id], [Gluten], [Name], [Type]) VALUES (1, 0, N'Tomatoe', 3) " +
-"INSERT INTO [dbo].[Ingredients] ([Id], [Gluten], [Name], [Type]) VALUES (2, 1, N'Flour', 1) " +
-"INSERT INTO [dbo].[Ingredients] ([Id], [Gluten], [Name], [Type]) VALUES (3, 0, N'Cheese', 2) " +
-"INSERT INTO [dbo].[Ingredients] ([Id], [Gluten], [Name], [Type]) VALUES (4, 0, N'Lettuce', 3) " +
-"INSERT INTO [dbo].[Ingredients] ([Id], [Gluten], [Name], [Type]) VALUES (5, 0, N'Shrimp', 2) " +
-"INSERT INTO [dbo].[Ingredients] ([Id], [Gluten], [Name], [Type]) VALUES (1002, 1, N'Kebab', 2) " +
-"INSERT INTO [dbo].[Ingredients] ([Id], [Gluten], [Name], [Type]) VALUES (1003, 0, N'Pineapple', 3) " +
+"INSERT INTO [dbo].[Ingredients] ([Id], [Gluten], [Name], [Type]) VALUES (1, 0, N'Tomatoe', 2) " +
+"INSERT INTO [dbo].[Ingredients] ([Id], [Gluten], [Name], [Type]) VALUES (2, 1, N'Flour', 0) " +
+"INSERT INTO [dbo].[Ingredients] ([Id], [Gluten], [Name], [Type]) VALUES (3, 0, N'Cheese', 0) " +
+"INSERT INTO [dbo].[Ingredients] ([Id], [Gluten], [Name], [Type]) VALUES (4, 0, N'Lettuce', 2) " +
+"INSERT INTO [dbo].[Ingredients] ([Id], [Gluten], [Name], [Type]) VALUES (5, 0, N'Shrimp', 1) " +
+"INSERT INTO [dbo].[Ingredients] ([Id], [Gluten], [Name], [Type]) VALUES (6, 1, N'Kebab', 1) " +
+"INSERT INTO [dbo].[Ingredients] ([Id], [Gluten], [Name], [Type]) VALUES (7, 0, N'Pineapple', 3) " +
 "SET IDENTITY_INSERT [dbo].[Ingredients] OFF " +
 
 "SET IDENTITY_INSERT [dbo].[PizzaIngredients] ON " +
 "INSERT INTO [dbo].[PizzaIngredients] ([Id], [IngredientId], [PizzaId]) VALUES (1, 1, 1) " +
-"INSERT INTO [dbo].[PizzaIngredients] ([Id], [IngredientId], [PizzaId]) VALUES (2, 1, 2002) " +
-"INSERT INTO [dbo].[PizzaIngredients] ([Id], [IngredientId], [PizzaId]) VALUES (1002, 2, 2002) " +
-"INSERT INTO [dbo].[PizzaIngredients] ([Id], [IngredientId], [PizzaId]) VALUES (1003, 3, 2002) " +
-"INSERT INTO [dbo].[PizzaIngredients] ([Id], [IngredientId], [PizzaId]) VALUES (1004, 5, 1) " +
+"INSERT INTO [dbo].[PizzaIngredients] ([Id], [IngredientId], [PizzaId]) VALUES (2, 2, 1) " +
+"INSERT INTO [dbo].[PizzaIngredients] ([Id], [IngredientId], [PizzaId]) VALUES (3, 3, 1) " +
+"INSERT INTO [dbo].[PizzaIngredients] ([Id], [IngredientId], [PizzaId]) VALUES (4, 6, 1) " +
+"INSERT INTO [dbo].[PizzaIngredients] ([Id], [IngredientId], [PizzaId]) VALUES (5, 1, 2002) " +
+"INSERT INTO [dbo].[PizzaIngredients] ([Id], [IngredientId], [PizzaId]) VALUES (6, 2, 2002) " +
+"INSERT INTO [dbo].[PizzaIngredients] ([Id], [IngredientId], [PizzaId]) VALUES (7, 3, 2002) " +
+"INSERT INTO [dbo].[PizzaIngredients] ([Id], [IngredientId], [PizzaId]) VALUES (8, 4, 2002) " +
+"INSERT INTO [dbo].[PizzaIngredients] ([Id], [IngredientId], [PizzaId]) VALUES (9, 5, 2002) " +
+"INSERT INTO [dbo].[PizzaIngredients] ([Id], [IngredientId], [PizzaId]) VALUES (10, 1, 1002) " +
+"INSERT INTO [dbo].[PizzaIngredients] ([Id], [IngredientId], [PizzaId]) VALUES (11, 2, 1002) " +
+"INSERT INTO [dbo].[PizzaIngredients] ([Id], [IngredientId], [PizzaId]) VALUES (12, 3, 1002) " +
+"INSERT INTO [dbo].[PizzaIngredients] ([Id], [IngredientId], [PizzaId]) VALUES (13, 7, 1002) " +
+"INSERT INTO [dbo].[PizzaIngredients] ([Id], [IngredientId], [PizzaId]) VALUES (14, 4, 1) " +
 "SET IDENTITY_INSERT [dbo].[PizzaIngredients] OFF "
 
                 );
