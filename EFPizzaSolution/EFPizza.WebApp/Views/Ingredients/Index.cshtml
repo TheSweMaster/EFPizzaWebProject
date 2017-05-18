@@ -37,22 +37,7 @@
                 @Html.DisplayFor(modelItem => item.Gluten)
             </td>
             <td>
-                @if (item.Type == 1)
-                {
-                    <div>Meat</div>
-                }
-                else if (item.Type == 2)
-                {
-                    <div>Vegetable</div>
-                }
-                else if (item.Type == 3)
-                {
-                    <div>Fruit</div>
-                }
-                else
-                {
-                    <div>Other</div>
-                }
+                @Html.DisplayFor(modelItem => item.Type)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |

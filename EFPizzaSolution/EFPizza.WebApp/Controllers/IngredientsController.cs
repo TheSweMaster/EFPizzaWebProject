@@ -36,8 +36,6 @@ namespace EFPizza.WebApp.Controllers
             var ingredients = await _context.Ingredients
                 .SingleOrDefaultAsync(m => m.Id == id);
 
-            ViewBag.DisplayType = GetDisplayTypeValue(ingredients);
-
             var listOfPizzas = _context.PizzaIngredients.Where(x => x.IngredientId == id).Select(x => x.Pizza.Name).ToList();
 
             ViewBag.PizzaIngredients = listOfPizzas;
@@ -48,23 +46,6 @@ namespace EFPizza.WebApp.Controllers
             }
 
             return View(ingredients);
-        }
-
-        private string GetDisplayTypeValue(Ingredients ingredients)
-        {
-            switch (ingredients.Type)
-            {
-                case 0:
-                    return "Other";
-                case 1:
-                    return "Meat";
-                case 2:
-                    return "Vegetable";
-                case 3:
-                    return "Fruit";
-                default:
-                    return "None";
-            }
         }
 
         // GET: Ingredients/Create
@@ -83,10 +64,6 @@ namespace EFPizza.WebApp.Controllers
             if (ModelState.IsValid)
             {
                 ingredients.Type = SetingredientsType(type);
-                if (type == "Other")
-                {
-                    ingredients.Type = 0;
-                }
                 _context.Add(ingredients);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
@@ -94,26 +71,25 @@ namespace EFPizza.WebApp.Controllers
             return View(ingredients);
         }
 
-        private int SetingredientsType(string type)
+        private Types SetingredientsType(string type)
         {
             if (type == "Meat")
             {
-                return 1;
+                return Types.Meat;
             }
             else if (type == "Vegetable")
             {
-                return 2;
+                return Types.Vegetable;
             }
             else if (type == "Fruit")
             {
-                return 3;
+                return Types.Fruit;
             }
             else
             {
-                return 0;
+                return Types.Other;
             }
         }
-
 
         // GET: Ingredients/Edit/5
         public async Task<IActionResult> Edit(int? id)
@@ -136,7 +112,7 @@ namespace EFPizza.WebApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Gluten,Name,Type")] Ingredients ingredients)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Gluten,Name")] Ingredients ingredients, string type)
         {
             if (id != ingredients.Id)
             {
@@ -147,6 +123,7 @@ namespace EFPizza.WebApp.Controllers
             {
                 try
                 {
+                    ingredients.Type = SetingredientsType(type);
                     _context.Update(ingredients);
                     await _context.SaveChangesAsync();
                 }

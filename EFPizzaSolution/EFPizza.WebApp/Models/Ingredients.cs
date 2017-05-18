@@ -23,9 +23,18 @@ namespace EFPizza.WebApp.Models
         public string Name { get; set; }
 
         [Range(0, 10)]
-        public int Type { get; set; }
+        public Types Type { get; set; }
 
         [DisplayName("Pizza Ingredients")]
         public virtual ICollection<PizzaIngredients> PizzaIngredients { get; set; }
     }
+
+    public enum Types
+    {
+        Other,
+        Meat,
+        Vegetable,
+        Fruit
+    }
+
 }
