@@ -9,7 +9,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Include="wwwroot\images\countries.png" />
+    <Content Include="wwwroot\images\Epic sax guy is back! 2017 EUROVISION MOLDOVA 2017.mp3" />
+    <Content Include="wwwroot\images\epicsaxguy.gif" />
+    <Content Include="wwwroot\images\Pizzagif.gif" />
     <Content Include="wwwroot\images\pizzapic.jpeg" />
+    <Content Include="wwwroot\images\Vegetables4.jpg" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.0.0" />
