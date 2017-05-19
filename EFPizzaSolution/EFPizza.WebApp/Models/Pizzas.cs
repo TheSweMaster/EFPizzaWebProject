@@ -28,10 +28,12 @@ namespace EFPizza.WebApp.Models
         [Required]
         public decimal Prize { get; set; }
 
+        [DisplayName("Origin")]
         public virtual Orgins Orgins { get; set; }
 
         [DisplayName("Pizza Ingredients")]
         public virtual ICollection<PizzaIngredients> PizzaIngredients { get; set; }
+        [DisplayName("Reviews")]
         public virtual ICollection<Reviews> Reviews { get; set; }
     }
 }

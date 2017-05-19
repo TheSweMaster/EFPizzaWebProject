@@ -7,7 +7,7 @@
 <h2>Details</h2>
 
 <div>
-    <h4>Pizzas</h4>
+    <h4><b>Pizzas</b></h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -32,7 +32,80 @@
 </div>
 
 <p>
-    <div><b>List of ingredients:</b></div>
+    <b>Origin of Pizza:</b>
+    <br />
+@if (Model.Orgins != null)
+{
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Orgins.Country)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Orgins.Country)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Orgins.City)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Orgins.City)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Orgins.Date)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Orgins.Date)
+        </dd>
+    </dl>
+}
+else
+{
+    <div>No @Html.DisplayNameFor(Model => Model.Orgins) was found. </div>
+}
+</p>
+
+<p>
+    <b>Reviews of Pizza:</b>
+    <br />
+    @if (ViewBag.Reviews.Count != 0)
+    {
+        @foreach (var rev in ViewBag.Reviews)
+        {
+            <dl class="dl-horizontal">
+                <dt>
+                    Title
+                </dt>
+                <dd>
+                    @rev.Title
+                </dd>
+                <dt>
+                    Description
+                </dt>
+                <dd>
+                    @rev.Description
+                </dd>
+                <dt>
+                    Grade (0-5)
+                </dt>
+                <dd>
+                    @rev.Grade
+                </dd>
+                <dt>
+                    Date
+                </dt>
+                <dd>
+                    @rev.Date
+                </dd>
+            </dl>
+        }
+    }
+    else
+    {
+        <div>No @Html.DisplayNameFor(Model => Model.Reviews) was found. </div>
+    }
+</p>
+
+<p>
+    <div><b>List of Ingredients:</b></div>
 
     @if (ViewBag.PizzaIngredients.Count != 0)
     {

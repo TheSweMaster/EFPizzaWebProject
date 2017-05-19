@@ -32,12 +32,14 @@ namespace EFPizza.WebApp.Controllers
                 return NotFound();
             }
 
-            var pizzas = await _context.Pizzas
+            var pizzas = await _context.Pizzas.Include(p => p.Orgins)
                 .SingleOrDefaultAsync(m => m.Id == id);
 
-            var listOfIngredients = _context.PizzaIngredients.Where(x => x.PizzaId == id).Select(x => x.Ingredient.Name).ToList();
+            var listOfIngredients = await _context.PizzaIngredients.Where(x => x.PizzaId == id).Select(x => x.Ingredient.Name).ToListAsync();
+            ViewBag.PizzaIngredients = listOfIngredients;
 
-            ViewBag.PizzaIngredients = listOfIngredients; 
+            var listOfReviews = await _context.Reviews.Where(x => x.PizzaId == id).Select(x => x).ToListAsync();
+            ViewBag.Reviews = listOfReviews;
 
             if (pizzas == null)
             {
