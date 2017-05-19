@@ -21,8 +21,8 @@ namespace EFPizza.WebApp.Controllers
         // GET: Reviews
         public async Task<IActionResult> Index()
         {
-            var eFPizzaContext = _context.Reviews.Include(r => r.Pizza).OrderBy(r => r.Pizza.Name);
-            return View(await eFPizzaContext.ToListAsync());
+            var eFPizzaContext = await _context.Reviews.Include(r => r.Pizza).OrderBy(r => r.Pizza.Name).ToListAsync();
+            return View(eFPizzaContext);
         }
 
         // GET: Reviews/Details/5

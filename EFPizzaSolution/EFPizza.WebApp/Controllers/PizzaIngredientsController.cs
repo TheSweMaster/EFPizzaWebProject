@@ -21,8 +21,8 @@ namespace EFPizza.WebApp.Controllers
         // GET: PizzaIngredients
         public async Task<IActionResult> Index()
         {
-            var eFPizzaContext = _context.PizzaIngredients.Include(p => p.Ingredient).Include(p => p.Pizza).OrderBy(p => p.Pizza.Id);
-            return View(await eFPizzaContext.ToListAsync());
+            var eFPizzaContext = await _context.PizzaIngredients.Include(p => p.Ingredient).Include(p => p.Pizza).OrderBy(p => p.Pizza.Id).ToListAsync();
+            return View(eFPizzaContext);
         }
 
         // GET: PizzaIngredients/Details/5
