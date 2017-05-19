@@ -120,6 +120,23 @@ else
     }
 </p>
 
+@if (Model.Id == 1)
+{
+    <p><img src="~/images/kebabpizza.jpg" alt="Picture of Kebab Pizza" /></p>
+}
+else if (Model.Id == 1002)
+{
+    <p><img src="~/images/hawaipizza.png" alt="Picture of Hawaii Pizza"/></p>
+}
+else if (Model.Id == 2002)
+{
+    <p><img src="~/images/specialpizza.jpg" alt="Picture of Special Pizza"/></p>
+}
+else
+{
+    <p>No picture were found.</p>
+}
+
 <div>
     <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
     <a asp-action="Index">Back to List</a>

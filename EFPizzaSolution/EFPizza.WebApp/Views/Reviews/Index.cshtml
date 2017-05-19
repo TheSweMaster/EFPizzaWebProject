@@ -37,7 +37,31 @@
                 @Html.DisplayFor(modelItem => item.Title)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Grade)
+                @if (item.Grade == 5)
+                {
+                    <div><img src="~/images/5stars.png" width="70"/></div>
+                }
+                else if (item.Grade == 4)
+                {
+                    <div><img src="~/images/4stars.png" width="70"/> </div>
+                }
+                else if (item.Grade == 3)
+                {
+                    <div><img src="~/images/3stars.png" width="70"/> </div>
+                }
+                else if (item.Grade == 2)
+                {
+                    <div><img src="~/images/2stars.png" width="70"/> </div>
+                }
+                else if (item.Grade == 1)
+                {
+                    <div><img src="~/images/1star.png" width="70"/> </div>
+                }
+                else
+                {
+                    <div><img src="~/images/0stars.png" width="70"/> </div>
+                }
+                @*@Html.DisplayFor(modelItem => item.Grade)*@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Description)
