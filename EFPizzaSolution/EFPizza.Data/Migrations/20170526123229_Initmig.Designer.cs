@@ -9,8 +9,8 @@ using EFPizza.Domain;
 namespace EFPizza.Data.Migrations
 {
     [DbContext(typeof(PizzaContext))]
-    [Migration("20170515110408_MyFirstMigration4")]
-    partial class MyFirstMigration4
+    [Migration("20170526123229_Initmig")]
+    partial class Initmig
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,7 +23,7 @@ namespace EFPizza.Data.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<bool>("Gluten");
+                    b.Property<int>("Gluten");
 
                     b.Property<string>("Name");
 
